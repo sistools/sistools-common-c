@@ -205,7 +205,7 @@ if(BUILD_TESTING)
 		add_subdirectory(test)
 	else()
 
-		message(FATAL_ERROR "BUILD_TESTING is ON but test/CMakeLists.txt is not present")
+		message("-- test directory not present; skipping (define BUILD_TESTING after test/ exists)")
 	endif()
 else(BUILD_TESTING)
 

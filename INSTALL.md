@@ -71,9 +71,9 @@ The primary choice for installation is by use of **CMake**.
 	)
 	```
 
-> **NOTE**: the **CMake** lists files and helper scripts named above are
-> part of the project scaffolding and will land in a subsequent bootstrap
-> step; this document describes the intended installation contract.
+> **NOTE**: the **examples** and **test** trees are introduced in later
+> bootstrap steps; until then, **prepare_cmake.sh** will configure the
+> core library and skip missing optional subdirectories.
 
 
 <!-- ########################### end of file ########################### -->
