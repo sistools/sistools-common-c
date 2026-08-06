@@ -15,6 +15,8 @@
 
 #include <sistools/common.h>
 
+#include <diagnosticism/version_string.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -23,23 +25,29 @@
  * helpers
  */
 
+/** Writes "\t<libname> v<diagnosticism-version>\n" to @a stm. */
 static
 void
 version_(
     FILE*       stm
 ,   char const* libname
-,   stcc_uint32_t libver
+,   int         verMajor
+,   int         verMinor
+,   int         verPatch
+,   int         verAlphaBeta
 )
 {
-    fprintf(
-        stm
-    ,   "%s v%u.%u.%u.%u\n"
-    ,   libname
-    ,   (unsigned)((libver >> 24) & 0xff)
-    ,   (unsigned)((libver >> 16) & 0xff)
-    ,   (unsigned)((libver >>  8) & 0xff)
-    ,   (unsigned)((libver >>  0) & 0xff)
+    char    vs[100];
+    size_t  n = 0;
+
+    /* Failure is ignored: buffer is ample for any plausible version string. */
+    diagnosticism_calc_version_string(
+        vs, sizeof(vs)
+    ,   verMajor, verMinor, verPatch, verAlphaBeta
+    ,   &n
     );
+
+    fprintf(stm, "\t%s v%.*s\n", libname, (int)n, vs);
 }
 
 
@@ -52,7 +60,23 @@ int main(int argc, char* argv[])
     ((void)argc);
     ((void)argv);
 
-    version_(stdout, "\tsistools-common-c", stcc_api_version());
+    version_(
+        stdout
+    ,   "sistools-common-c"
+    ,   STCC_VER_MAJOR
+    ,   STCC_VER_MINOR
+    ,   STCC_VER_PATCH
+    ,   STCC_VER_ALPHABETA
+    );
+
+    version_(
+        stdout
+    ,   "Diagnosticism"
+    ,   DIAGNOSTICISM_VER_MAJOR
+    ,   DIAGNOSTICISM_VER_MINOR
+    ,   DIAGNOSTICISM_VER_PATCH
+    ,   DIAGNOSTICISM_VER_ALPHABETA
+    );
 
     return EXIT_SUCCESS;
 }

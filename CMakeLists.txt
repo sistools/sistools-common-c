@@ -115,13 +115,24 @@ option(BUILD_TESTING "Build tests" OFF)
 # ######################################
 # dependencies
 #
-# required: (none recorded yet)
+# required:
+# - Diagnosticism;
 #
 # optional:
 #
 # testing-only:
 # - STLSoft;
 # - xTests;
+
+
+# ############################
+# Diagnosticism
+
+set(DIAGNOSTICISM_REQUIRED_VERSION_ 0.3)
+
+find_package(Diagnosticism ${DIAGNOSTICISM_REQUIRED_VERSION_} REQUIRED)
+
+message("-- CMake package Diagnosticism found (version ${Diagnosticism_VERSION}; ${DIAGNOSTICISM_REQUIRED_VERSION_} requested)")
 
 
 # ############################

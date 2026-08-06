@@ -66,7 +66,8 @@ target_include_directories(core
 )
 
 target_link_libraries(core
-	PRIVATE
+	PUBLIC
+		Diagnosticism::core
 )
 
 target_compile_options(core

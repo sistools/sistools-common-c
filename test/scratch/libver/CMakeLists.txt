@@ -1,1 +1,1 @@
-define_example_program(libver main.c)
+define_example_program(test.scratch.libver main.c)

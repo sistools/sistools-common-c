@@ -8,6 +8,7 @@
 * CMake helper scripts (**prepare_cmake.sh**, **build_cmake.sh**, **clean_cmake.sh**, **remove_cmake_artefacts.sh**, **run_all_*.sh** / **.cmd**);
 * Documentation refresh for current scaffolding (**README.md** installation sketch, **INSTALL.md** usage section, honest **EXAMPLES.md**);
 * Test tree: scratch **libver** and unit **test.unit.api_version** (test-only deps **STLSoft**, **xTests**);
+* **Diagnosticism** dependency; scratch **test.scratch.libver** uses **`diagnosticism_calc_version_string()`**;
 
 
 <!-- ########################### end of file ########################### -->

@@ -140,12 +140,12 @@ Defect reports, feature requests, and pull requests are welcome on [the **sistoo
 
 ### Dependencies
 
-None.
+* [**Diagnosticism**](https://github.com/synesissoftware/Diagnosticism);
 
 
 #### Development/Testing Dependencies
 
-For unit-testing, **sistools-common-c** depends on:
+For unit-testing, **sistools-common-c** depends additionally on:
 
 * [**STLSoft**](https://github.com/synesissoftware/STLSoft);
 * [**xTests**](https://github.com/synesissoftware/xTests);

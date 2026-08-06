@@ -13,8 +13,9 @@
 
 Installation requires **CMake** (3.20 or later) and a supported C toolchain.
 
-The core library has no recorded third-party runtime dependencies at this
-time.
+**sistools-common-c** depends on:
+
+* [**Diagnosticism**](https://github.com/synesissoftware/Diagnosticism);
 
 Building the project's unit tests additionally requires:
 
@@ -22,7 +23,7 @@ Building the project's unit tests additionally requires:
 * [**xTests**](https://github.com/synesissoftware/xTests);
 
 > **NOTE**: if you do not wish to build the tests, then you need not
-> obtain/install those dependencies (use `./prepare_cmake.sh -T`).
+> obtain/install the test-only dependencies (use `./prepare_cmake.sh -T`).
 
 
 ## Building
