@@ -32,6 +32,7 @@ Common C helper functions and utilities shared across **sistools** programs.
 	- [Where to get help](#where-to-get-help)
 	- [Contribution guidelines](#contribution-guidelines)
 	- [Dependencies](#dependencies)
+		- [Development/Testing Dependencies](#developmenttesting-dependencies)
 	- [Related projects](#related-projects)
 	- [License](#license)
 
@@ -140,6 +141,14 @@ Defect reports, feature requests, and pull requests are welcome on [the **sistoo
 ### Dependencies
 
 None.
+
+
+#### Development/Testing Dependencies
+
+For unit-testing, **sistools-common-c** depends on:
+
+* [**STLSoft**](https://github.com/synesissoftware/STLSoft);
+* [**xTests**](https://github.com/synesissoftware/xTests);
 
 
 ### Related projects

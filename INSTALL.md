@@ -13,9 +13,16 @@
 
 Installation requires **CMake** (3.20 or later) and a supported C toolchain.
 
-Third-party library dependencies — both for the core library and for
-tests — will be listed here as they are introduced. None are recorded at
-this time.
+The core library has no recorded third-party runtime dependencies at this
+time.
+
+Building the project's unit tests additionally requires:
+
+* [**STLSoft**](https://github.com/synesissoftware/STLSoft);
+* [**xTests**](https://github.com/synesissoftware/xTests);
+
+> **NOTE**: if you do not wish to build the tests, then you need not
+> obtain/install those dependencies (use `./prepare_cmake.sh -T`).
 
 
 ## Building
@@ -42,9 +49,10 @@ The primary choice for installation is by use of **CMake**.
 	$ ./prepare_cmake.sh
 	```
 
-   Until **examples** and **test** trees are present, you may pass `-E`
-   and/or `-T` to disable those options explicitly (the configure step also
-   skips missing optional subdirectories):
+   Until an **examples** tree is present, you may pass `-E` to disable
+   that option explicitly (the configure step also skips a missing
+   `examples/` directory). Use `-T` to disable tests and avoid the
+   **STLSoft** / **xTests** test-only dependencies:
 
 	```bash
 	$ ./prepare_cmake.sh -E -T

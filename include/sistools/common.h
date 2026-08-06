@@ -79,7 +79,7 @@
 
 #define STCC_VER_MAJOR          0
 #define STCC_VER_MINOR          0
-#define STCC_VER_PATCH          1
+#define STCC_VER_PATCH          0
 #define STCC_VER_ALPHABETA      0xFF
 
 #define STCC_VER \

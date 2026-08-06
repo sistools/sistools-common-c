@@ -105,7 +105,6 @@ include(TargetMacros)
 # options
 
 option(BUILD_EXAMPLES "Build examples" ON)
-# Default OFF until test tree / test-only dependencies are introduced.
 option(BUILD_TESTING "Build tests" OFF)
 
 
@@ -120,7 +119,61 @@ option(BUILD_TESTING "Build tests" OFF)
 #
 # optional:
 #
-# testing-only: (none recorded yet)
+# testing-only:
+# - STLSoft;
+# - xTests;
+
+
+# ############################
+# STLSoft
+#
+# We provide flexibility here, as in:
+# 1. if a CMake variable STLSOFT is provided then it is used; otherwise
+# 2. if an environment variable STLSOFT is provided then it is used;
+#    otherwise
+# 3. if the package STLSoft (via find_package()) is found then it is used;
+#    otherwise
+# 4. we abort
+
+if(BUILD_TESTING)
+
+	if(DEFINED STLSOFT)
+
+		message("-- STLSOFT provided as CMake variable with value '${STLSOFT}'")
+
+		set(STLSOFT_INCLUDE_DIR ${STLSOFT}/include)
+	elseif(DEFINED ENV{STLSOFT})
+
+		message("-- STLSOFT provided as environment variable with value '$ENV{STLSOFT}'")
+
+		set(STLSOFT_INCLUDE_DIR $ENV{STLSOFT}/include)
+	else()
+
+		set(STLSoft_REQUIRED_VERSION_ 1.11)
+
+		find_package(STLSoft ${STLSoft_REQUIRED_VERSION_} REQUIRED)
+
+		message("-- CMake package STLSoft found (version ${STLSoft_VERSION}; ${STLSoft_REQUIRED_VERSION_} requested)")
+	endif()
+
+	if(DEFINED STLSOFT_INCLUDE_DIR)
+
+		include_directories(${STLSOFT_INCLUDE_DIR})
+	endif()
+endif(BUILD_TESTING)
+
+
+# ############################
+# xTests
+
+if(BUILD_TESTING)
+
+	set(xTests_REQUIRED_VERSION_ 0.26.4)
+
+	find_package(xTests ${xTests_REQUIRED_VERSION_} REQUIRED)
+
+	message("-- CMake package xTests found (version ${xTests_VERSION}; ${xTests_REQUIRED_VERSION_} requested)")
+endif(BUILD_TESTING)
 
 
 # ################################################
