@@ -10,17 +10,12 @@
 
 ## Requisites
 
-The **sistools-common-c** core library has no required third-party runtime
-dependencies.
+Installation is via **CMake** (once the project scaffolding is present),
+together with a supported C toolchain.
 
-Building the project's unit tests additionally requires:
-
-* [**STLSoft**](https://github.com/synesissoftware/STLSoft);
-* [**xTests**](https://github.com/synesissoftware/xTests);
-
-> **NOTE**: if you do not wish to build the tests, then you need not
-> obtain/install the **STLSoft** / **xTests** dependencies (use
-> `./prepare_cmake.sh -T` once the CMake helper scripts are present).
+Third-party library dependencies — both for the core library and for
+tests — will be listed here as they are introduced. None are recorded at
+this time.
 
 
 ## Building
@@ -49,13 +44,6 @@ The primary choice for installation is by use of **CMake**.
 
    (**Hint**: execute `$ ./prepare_cmake.sh --help` for more information.)
 
-   **NOTE**: if you intend only to build and install the library then you
-   can eschew building of tests (via flag `-T`) and use the command:
-
-	```bash
-	$ ./prepare_cmake.sh -T
-	```
-
 3. Run a build of the generated **CMake**-derived build files via the
    **build_cmake.sh** script, as in:
 
@@ -66,20 +54,13 @@ The primary choice for installation is by use of **CMake**.
    (**NOTE**: if you provide the flag `--run-make` (=== `-m`) in step 2 then
    you do not need this step.)
 
-4. As a check (when testing was not disabled), execute the built unit-test
-   programs via **run_all_unit_tests.sh**, as in:
-
-	```bash
-	$ ./run_all_unit_tests.sh
-	```
-
-5. Install the library on the host, via `cmake`, as in:
+4. Install the library on the host, via `cmake`, as in:
 
 	```bash
 	$ sudo cmake --install ${SIS_CMAKE_BUILD_DIR:-./_build} --config Release
 	```
 
-6. Then to use the library from another **CMake** project:
+5. Then to use the library from another **CMake** project:
 
 	```cmake
 	find_package(sistools-common-c REQUIRED)
