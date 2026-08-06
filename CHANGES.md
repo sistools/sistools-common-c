@@ -10,6 +10,7 @@
 * Test tree: scratch **libver** and unit **test.unit.api_version** (test-only deps **STLSoft**, **xTests**);
 * **Diagnosticism** dependency; scratch **test.scratch.libver** uses **`diagnosticism_calc_version_string()`**;
 * Modular GitHub Actions CI (**`ci.yml`** / **`ci-cell.yml`**) covering Linux (**Clang**/**GCC**/**TinyCC**), macOS (**Clang**), and Windows (**cl** / **MinGW**); **TinyCC** is library build/install only (**`-T`** / no unit tests) until **STLSoft** / **xTests** support it;
+* Editor defaults (**`.vscode/settings.json`**, **`.vimrc`**);
 
 
 <!-- ########################### end of file ########################### -->
