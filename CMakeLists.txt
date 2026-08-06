@@ -116,23 +116,14 @@ option(BUILD_TESTING "Build tests" OFF)
 # dependencies
 #
 # required:
+# - CLASP;
 # - Diagnosticism;
+# - STLSoft;
 #
 # optional:
 #
 # testing-only:
-# - STLSoft;
 # - xTests;
-
-
-# ############################
-# Diagnosticism
-
-set(DIAGNOSTICISM_REQUIRED_VERSION_ 0.3)
-
-find_package(Diagnosticism ${DIAGNOSTICISM_REQUIRED_VERSION_} REQUIRED)
-
-message("-- CMake package Diagnosticism found (version ${Diagnosticism_VERSION}; ${DIAGNOSTICISM_REQUIRED_VERSION_} requested)")
 
 
 # ############################
@@ -146,32 +137,49 @@ message("-- CMake package Diagnosticism found (version ${Diagnosticism_VERSION};
 #    otherwise
 # 4. we abort
 
-if(BUILD_TESTING)
+if(DEFINED STLSOFT)
 
-	if(DEFINED STLSOFT)
+	message("-- STLSOFT provided as CMake variable with value '${STLSOFT}'")
 
-		message("-- STLSOFT provided as CMake variable with value '${STLSOFT}'")
+	set(STLSOFT_INCLUDE_DIR ${STLSOFT}/include)
+elseif(DEFINED ENV{STLSOFT})
 
-		set(STLSOFT_INCLUDE_DIR ${STLSOFT}/include)
-	elseif(DEFINED ENV{STLSOFT})
+	message("-- STLSOFT provided as environment variable with value '$ENV{STLSOFT}'")
 
-		message("-- STLSOFT provided as environment variable with value '$ENV{STLSOFT}'")
+	set(STLSOFT_INCLUDE_DIR $ENV{STLSOFT}/include)
+else()
 
-		set(STLSOFT_INCLUDE_DIR $ENV{STLSOFT}/include)
-	else()
+	set(STLSoft_REQUIRED_VERSION_ 1.11)
 
-		set(STLSoft_REQUIRED_VERSION_ 1.11)
+	find_package(STLSoft ${STLSoft_REQUIRED_VERSION_} REQUIRED)
 
-		find_package(STLSoft ${STLSoft_REQUIRED_VERSION_} REQUIRED)
+	message("-- CMake package STLSoft found (version ${STLSoft_VERSION}; ${STLSoft_REQUIRED_VERSION_} requested)")
+endif()
 
-		message("-- CMake package STLSoft found (version ${STLSoft_VERSION}; ${STLSoft_REQUIRED_VERSION_} requested)")
-	endif()
+if(DEFINED STLSOFT_INCLUDE_DIR)
 
-	if(DEFINED STLSOFT_INCLUDE_DIR)
+	include_directories(${STLSOFT_INCLUDE_DIR})
+endif()
 
-		include_directories(${STLSOFT_INCLUDE_DIR})
-	endif()
-endif(BUILD_TESTING)
+
+# ############################
+# CLASP
+
+set(CLASP_REQUIRED_VERSION_ 0.15)
+
+find_package(CLASP ${CLASP_REQUIRED_VERSION_} REQUIRED)
+
+message("-- CMake package CLASP found (version ${CLASP_VERSION}; ${CLASP_REQUIRED_VERSION_} requested)")
+
+
+# ############################
+# Diagnosticism
+
+set(DIAGNOSTICISM_REQUIRED_VERSION_ 0.3)
+
+find_package(Diagnosticism ${DIAGNOSTICISM_REQUIRED_VERSION_} REQUIRED)
+
+message("-- CMake package Diagnosticism found (version ${Diagnosticism_VERSION}; ${DIAGNOSTICISM_REQUIRED_VERSION_} requested)")
 
 
 # ############################
