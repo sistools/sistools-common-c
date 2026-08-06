@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - dev
+      - boilerplate
       - fix
       - rc1
       - rc2
