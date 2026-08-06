@@ -49,6 +49,7 @@ endif(MSVC)
 set(COMMON_IMPLEMENTATION_FILES
 
 	sistools-common-c.c
+	usage.c
 )
 
 add_library(core
@@ -67,7 +68,9 @@ target_include_directories(core
 
 target_link_libraries(core
 	PUBLIC
+		CLASP::core
 		Diagnosticism::core
+		$<$<STREQUAL:${STLSOFT_INCLUDE_DIR},>:STLSoft::STLSoft>
 )
 
 target_compile_options(core

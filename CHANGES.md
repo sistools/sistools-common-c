@@ -1,6 +1,13 @@
 # sistools-common-c - Changes <!-- omit in toc -->
 
 
+## 0.1.0 - 7th August 2026
+
+* Added usage helpers (**`include/sistools/common/usage.h`**, **`src/usage.c`**): **`stcc_show_version()`**, **`stcc_show_help()`** (from **mksock** helpers);
+* Required dependencies extended: **CLASP**, **STLSoft** (in addition to **Diagnosticism**);
+* Unit test **test.unit.usage**;
+
+
 ## 0.0.1 - 7th August 2026
 
 * **Doxygen** support: **Doxyfile**, **doc/mainpage.md**, **generate_doxygen.sh**;
