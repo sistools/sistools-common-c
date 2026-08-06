@@ -9,9 +9,11 @@
 
 ## Functional improvements
 
-* [ ] CMake scaffolding (`CMakeLists.txt`, `cmake/` modules, package export);
-* [ ] `.sis/` metadata and CMake helper scripts (`prepare_cmake.sh`, `build_cmake.sh`, …);
-* [ ] Source/layout skeleton (`include/`, `src/`, `test/`, `examples/`);
+* [x] CMake scaffolding (`CMakeLists.txt`, `cmake/` modules, package export);
+* [x] `.sis/` metadata;
+* [ ] CMake helper scripts (`prepare_cmake.sh`, `build_cmake.sh`, …);
+* [x] Source/layout skeleton (`include/sistools/`, `src/`);
+* [ ] Test and examples trees (`test/`, `examples/`);
 * [ ] Continuous integration (`.github/workflows/ci.yml` / `ci-cell.yml`);
 * [ ] Editor defaults (`.vscode/settings.json`, `.vimrc`);
 * [ ] First shared helper APIs extracted from **sistools** programs;

@@ -67,7 +67,7 @@ The primary choice for installation is by use of **CMake**.
 
 	target_link_libraries(your_target
 		PRIVATE
-			sistools-common-c::sistools-common-c
+			sistools-common-c::core
 	)
 	```
 

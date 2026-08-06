@@ -61,12 +61,21 @@ No public library-specific features are defined at this time.
 
 ### Functions
 
-No public functions are defined at this time.
+The following public functions are defined in the current version:
+
+```C
+/** Obtains the sistools-common-c version (at time of compilation). */
+stcc_uint32_t
+stcc_api_version(void);
+```
 
 
 ### Macros
 
-No public macros are defined at this time.
+The following public macros are defined in the current version:
+
+* `STCC_VER_MAJOR`, `STCC_VER_MINOR`, `STCC_VER_PATCH`, `STCC_VER_ALPHABETA`, `STCC_VER`;
+* `STCC_CALL`, `STCC_NOEXCEPT`;
 
 
 ### Structures
@@ -76,7 +85,11 @@ No public structures are defined at this time.
 
 ### (Simple) Types
 
-No public types are defined at this time.
+The following public types are defined in the current version:
+
+```C
+typedef uint32_t stcc_uint32_t;
+```
 
 
 ## Examples
