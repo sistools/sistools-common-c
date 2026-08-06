@@ -6,12 +6,12 @@
 - [Requisites](#requisites)
 - [Building](#building)
 	- [via CMake](#via-cmake)
+- [Using the library](#using-the-library)
 
 
 ## Requisites
 
-Installation is via **CMake** (once the project scaffolding is present),
-together with a supported C toolchain.
+Installation requires **CMake** (3.20 or later) and a supported C toolchain.
 
 Third-party library dependencies — both for the core library and for
 tests — will be listed here as they are introduced. None are recorded at
@@ -42,6 +42,14 @@ The primary choice for installation is by use of **CMake**.
 	$ ./prepare_cmake.sh
 	```
 
+   Until **examples** and **test** trees are present, you may pass `-E`
+   and/or `-T` to disable those options explicitly (the configure step also
+   skips missing optional subdirectories):
+
+	```bash
+	$ ./prepare_cmake.sh -E -T
+	```
+
    (**Hint**: execute `$ ./prepare_cmake.sh --help` for more information.)
 
 3. Run a build of the generated **CMake**-derived build files via the
@@ -60,20 +68,28 @@ The primary choice for installation is by use of **CMake**.
 	$ sudo cmake --install ${SIS_CMAKE_BUILD_DIR:-./_build} --config Release
 	```
 
-5. Then to use the library from another **CMake** project:
 
-	```cmake
-	find_package(sistools-common-c REQUIRED)
+## Using the library
 
-	target_link_libraries(your_target
-		PRIVATE
-			sistools-common-c::core
-	)
-	```
+Include the umbrella header:
 
-> **NOTE**: the **examples** and **test** trees are introduced in later
-> bootstrap steps; until then, **prepare_cmake.sh** will configure the
-> core library and skip missing optional subdirectories.
+```C
+#include <sistools/common.h>
+```
+
+Specific facilities will be declared under `sistools/common/` as they are
+added.
+
+From another **CMake** project:
+
+```cmake
+find_package(sistools-common-c REQUIRED)
+
+target_link_libraries(your_target
+	PRIVATE
+		sistools-common-c::core
+)
+```
 
 
 <!-- ########################### end of file ########################### -->

@@ -13,6 +13,7 @@
 * [x] `.sis/` metadata;
 * [x] CMake helper scripts (`prepare_cmake.sh`, `build_cmake.sh`, …);
 * [x] Source/layout skeleton (`include/sistools/`, `src/`);
+* [x] Project documentation aligned with current scaffolding;
 * [ ] Test and examples trees (`test/`, `examples/`);
 * [ ] Continuous integration (`.github/workflows/ci.yml` / `ci-cell.yml`);
 * [ ] Editor defaults (`.vscode/settings.json`, `.vimrc`);

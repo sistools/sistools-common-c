@@ -38,7 +38,33 @@ Common C helper functions and utilities shared across **sistools** programs.
 
 ## Installation
 
-Detailed instructions — via **CMake** — are provided in the accompanying [INSTALL.md](./INSTALL.md) file.
+**CMake** configuration files are provided, along with helper scripts. Detailed
+instructions are in [INSTALL.md](./INSTALL.md).
+
+A minimal build/installation:
+
+1. Perform the CMake configuration
+
+	```bash
+	export SIS_CMAKE_BUILD_DIR=/tmp/sis/sistools-common-c
+	./prepare_cmake.sh -E -T
+	```
+
+2. Build the library
+
+	```bash
+	./build_cmake.sh
+	```
+
+3. Install
+
+	```bash
+	sudo cmake --install ${SIS_CMAKE_BUILD_DIR:-./_build} --config Release | grep -i -v up-to-date
+	```
+
+Consumers include the umbrella header as `#include <sistools/common.h>` and
+link **`sistools-common-c::core`**.
+
 
 
 ## Components
@@ -94,7 +120,8 @@ typedef uint32_t stcc_uint32_t;
 
 ## Examples
 
-Examples are provided in the `examples` directory, along with a markdown description for each. A detailed list TOC of them is provided in [EXAMPLES.md](./EXAMPLES.md).
+No examples are defined at this time. When present, they will live under the
+`examples` directory and be indexed in [EXAMPLES.md](./EXAMPLES.md).
 
 
 ## Project Information
