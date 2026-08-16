@@ -4,7 +4,7 @@
  * Purpose: Help / version usage helpers for sistools programs.
  *
  * Created: 7th August 2026
- * Updated: 7th August 2026
+ * Updated: 16th August 2026
  *
  * Home:    https://github.com/sistools/sistools-common-c/
  *
@@ -51,7 +51,7 @@
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_MAJOR  0
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_MINOR  1
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_PATCH  0
-# define STCC_VER_SISTOOLS_COMMON_H_USAGE_EDIT   2
+# define STCC_VER_SISTOOLS_COMMON_H_USAGE_EDIT   3
 #endif /* !STCC_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -86,8 +86,9 @@ stcc_show_version(
 
 /** Emits CLASP-like usage (custom header + `clasp_showBody`).
  *
- * Console width is obtained via `platformstl_C_get_console_width()`; tab
- * size and blanks-between-items are fixed inside this helper.
+ * Console width is obtained via PlatformSTL, or a TinyCC Unix ioctl /
+ * COLUMNS fallback; tab size and blanks-between-items are fixed inside
+ * this helper.
  *
  * @param args CLASP parsed arguments (may be NULL if unused by
  *  `clasp_showBody` for the given flags).

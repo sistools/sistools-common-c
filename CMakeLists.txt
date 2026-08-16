@@ -86,16 +86,6 @@ else(MSVC)
 	endif(MSVC_USE_MT)
 endif(MSVC)
 
-# STLSoft does not recognise TinyCC. `_STLSOFT_FORCE_ANY_COMPILER` is the
-# documented escape hatch so PlatformSTL (pulled in by usage.c) can compile.
-# The linux-tcc cell remains library-only until xTests supports TinyCC.
-if(CMAKE_C_COMPILER_ID STREQUAL "TinyCC")
-
-	add_compile_definitions(_STLSOFT_FORCE_ANY_COMPILER)
-
-	message("-- TinyCC: defining _STLSOFT_FORCE_ANY_COMPILER")
-endif()
-
 
 # ##########################################################
 # dependencies, features, includes, and options

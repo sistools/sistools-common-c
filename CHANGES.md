@@ -7,7 +7,7 @@
 * Required dependencies extended: **CLASP**, **STLSoft** (in addition to **Diagnosticism**);
 * Unit test **test.unit.usage**;
 * MSVC: suppress CRT secure deprecation (**C4996** / **`/wd4996`**) so **`tmpfile()`**-using unit tests compile with warnings-as-errors;
-* TinyCC: define **`_STLSOFT_FORCE_ANY_COMPILER`** so **STLSoft** / **PlatformSTL** compile (library still test-exempt);
+* TinyCC: **`stcc_show_help()`** uses a Unix **`ioctl`** / **`COLUMNS`** console-width fallback (**STLSoft** still rejects TinyCC after **`_STLSOFT_FORCE_ANY_COMPILER`**);
 
 
 ## 0.0.1 - 7th August 2026
