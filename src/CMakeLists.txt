@@ -5,7 +5,7 @@
 # Purpose:  CMake lists file for sistools-common-c core library
 #
 # Created:  7th August 2026
-# Updated:  7th August 2026
+# Updated:  16th August 2026
 #
 # ######################################################################## #
 
@@ -81,6 +81,8 @@ target_compile_options(core
 		>
 		$<$<CXX_COMPILER_ID:MSVC>:
 			/WX /W4
+
+			/wd4996
 		>
 )
 

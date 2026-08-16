@@ -6,6 +6,7 @@
 * Added usage helpers (**`include/sistools/common/usage.h`**, **`src/usage.c`**): **`stcc_show_version()`**, **`stcc_show_help()`** (from **mksock** helpers);
 * Required dependencies extended: **CLASP**, **STLSoft** (in addition to **Diagnosticism**);
 * Unit test **test.unit.usage**;
+* MSVC: suppress CRT secure deprecation (**C4996** / **`/wd4996`**) so **`tmpfile()`**-using unit tests compile with warnings-as-errors;
 
 
 ## 0.0.1 - 7th August 2026
