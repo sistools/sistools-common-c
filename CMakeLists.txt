@@ -5,7 +5,7 @@
 # Purpose:  Top-level CMake lists file for sistools-common-c
 #
 # Created:  7th August 2026
-# Updated:  7th August 2026
+# Updated:  16th August 2026
 #
 # ######################################################################## #
 
@@ -43,11 +43,11 @@ string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
 set(RX_PROJ_TAG "STCC")
 set(RX_WS "[ \t]")
 file(READ "${CMAKE_SOURCE_DIR}/include/sistools/common.h" _header_file)
-string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_MAJOR${RX_WS}+([0-9]+)" MAJOR_DUMMY ${_header_file})
+string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_MAJOR${RX_WS}+([0-9]+)" MAJOR_DUMMY "${_header_file}")
 set(_VERSION_MAJOR ${CMAKE_MATCH_1})
-string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_MINOR${RX_WS}+([0-9]+)" MINOR_DUMMY ${_header_file})
+string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_MINOR${RX_WS}+([0-9]+)" MINOR_DUMMY "${_header_file}")
 set(_VERSION_MINOR ${CMAKE_MATCH_1})
-string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_(PATCH|REVISION)${RX_WS}+([0-9]+)" PATCH_DUMMY ${_header_file})
+string(REGEX MATCH "#${RX_WS}*define${RX_WS}+_?${RX_PROJ_TAG}_VER_(PATCH|REVISION)${RX_WS}+([0-9]+)" PATCH_DUMMY "${_header_file}")
 set(_VERSION_PATCH ${CMAKE_MATCH_2})
 
 # set project version number here

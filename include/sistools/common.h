@@ -4,7 +4,7 @@
  * Purpose: Main header file for sistools-common-c (C-API).
  *
  * Created: 7th August 2026
- * Updated: 7th August 2026
+ * Updated: 16th August 2026
  *
  * Home:    https://github.com/sistools/sistools-common-c/
  *
