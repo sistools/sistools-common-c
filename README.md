@@ -20,21 +20,21 @@ Common C helper functions and utilities shared across **sistools** programs.
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Components](#components)
-	- [Constants](#constants)
-	- [Enumerations](#enumerations)
-	- [Features](#features)
-	- [Functions](#functions)
-	- [Macros](#macros)
-	- [Structures](#structures)
-	- [(Simple) Types](#simple-types)
+  - [Constants](#constants)
+  - [Enumerations](#enumerations)
+  - [Features](#features)
+  - [Functions](#functions)
+  - [Macros](#macros)
+  - [Structures](#structures)
+  - [(Simple) Types](#simple-types)
 - [Examples](#examples)
 - [Project Information](#project-information)
-	- [Where to get help](#where-to-get-help)
-	- [Contribution guidelines](#contribution-guidelines)
-	- [Dependencies](#dependencies)
-		- [Development/Testing Dependencies](#developmenttesting-dependencies)
-	- [Related projects](#related-projects)
-	- [License](#license)
+  - [Where to get help](#where-to-get-help)
+  - [Contribution guidelines](#contribution-guidelines)
+  - [Dependencies](#dependencies)
+    - [Development/Testing Dependencies](#developmenttesting-dependencies)
+  - [Related projects](#related-projects)
+  - [License](#license)
 
 
 ## Installation
@@ -187,12 +187,15 @@ For unit-testing, **sistools-common-c** depends additionally on:
 **sistools** programs that are intended to consume this library include:
 
 * [**chomp**](https://github.com/sistools/chomp);
-* [**errni**](https://github.com/sistools/errni);
+* [**errni**](https://github.com/sistools/errni) (errno on all platforms, and also GetLastError codes on Windows);
 * [**lnunique**](https://github.com/sistools/lnunique);
+* [**lslocales**](https://github.com/sistools/lslocales);
 * [**lstrip**](https://github.com/sistools/lstrip);
-* [**mksock**](https://github.com/sistools/mksock);
-* [**realpath**](https://github.com/sistools/realpath);
+* [**mksock**](https://github.com/sistools/mksock) (Unix-only);
+* [**ReadDebugString**](https://github.com/sistools/ReadDebugString) (Windows-only);
+* [**realpath**](https://github.com/sistools/realpath) (Windows-only);
 * [**rstrip**](https://github.com/sistools/rstrip);
+* [**WriteDebugString**](https://github.com/sistools/WriteDebugString) (Windows-only);
 
 
 ### License

@@ -39,7 +39,7 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file sistools/common/usage.h
+/** @file sistools/common/usage.h
  *
  * [C, C++] Help / version usage helpers for sistools programs.
  */
@@ -51,7 +51,7 @@
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_MAJOR  0
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_MINOR  1
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_PATCH  0
-# define STCC_VER_SISTOOLS_COMMON_H_USAGE_EDIT   3
+# define STCC_VER_SISTOOLS_COMMON_H_USAGE_EDIT   4
 #endif /* !STCC_DOCUMENTATION_SKIP_SECTION */
 
 

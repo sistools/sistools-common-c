@@ -1,13 +1,39 @@
 #! /bin/bash
 
 ScriptPath=$0
-Dir=$(cd $(dirname "$ScriptPath"); pwd)
+Dir=$(cd "$(dirname "$ScriptPath")" && pwd)
 Basename=$(basename "$ScriptPath")
+
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
-[[ -n "$MSYSTEM" ]] && DefaultMakeCmd=mingw32-make.exe || DefaultMakeCmd=make
+if [[ -n "$MSYSTEM" ]]; then
+
+  DefaultMakeCmd=mingw32-make.exe
+  MinGW=1
+else
+
+  DefaultMakeCmd=make
+fi
 MakeCmd=${SIS_CMAKE_MAKE_COMMAND:-${SIS_CMAKE_COMMAND:-$DefaultMakeCmd}}
 ProjectNameFile="$Dir/.sis/project_name.txt"
 ProjectName=$(tr -d '[:space:]' < "$ProjectNameFile")
+
+
+# ##########################################################
+# colours
+
+if command -v tput > /dev/null; then
+
+  SisClr_Blue=${FG_BLUE:-$(tput setaf 4)}
+  SisClr_Red=${FG_RED:-$(tput setaf 1)}
+  SisClr_Bold=${FD_BOLD:-$(tput bold)}
+  SisClr_None=${FD_NONE:-$(tput sgr0)}
+else
+
+  SisClr_Blue=
+  SisClr_Red=
+  SisClr_Bold=
+  SisClr_None=
+fi
 
 
 # ##########################################################
@@ -40,7 +66,7 @@ EOF
       ;;
     *)
 
-      >&2 echo "$ScriptPath: unrecognised argument '$1'; use --help for usage"
+      >&2 echo "$ScriptPath: ${SisClr_Red}${SisClr_Bold}unrecognised argument '$1'${SisClr_None}; use --help for usage"
 
       exit 1
       ;;
@@ -55,7 +81,7 @@ done
 
 if [ ! -d "$CMakeDir" ]; then
 
-  >&2 echo "$ScriptPath: CMake build directory '$CMakeDir' not found so nothing to do; use script 'prepare_cmake.sh' if you wish to prepare CMake artefacts"
+  >&2 echo "$ScriptPath: ${SisClr_Red}${SisClr_Bold}CMake build directory '$CMakeDir' not found${SisClr_None} so nothing to do; use script 'prepare_cmake.sh' if you wish to prepare CMake artefacts"
 
   exit 1
 else
@@ -64,14 +90,14 @@ else
 
   if [ ! -f "$CMakeDir/Makefile" ]; then
 
-    >&2 echo "$ScriptPath: CMake build directory '$CMakeDir' does not contain expected file 'Makefile', so a clean cannot be performed. It is recommended that you remove all CMake artefacts using script 'remove_cmake_artefacts.sh' followed by regeneration via 'prepare_cmake.sh'"
+    >&2 echo "$ScriptPath: ${SisClr_Red}${SisClr_Bold}CMake build directory '$CMakeDir' does not contain expected file 'Makefile'${SisClr_None}, so a clean cannot be performed. It is recommended that you remove all CMake artefacts using script 'remove_cmake_artefacts.sh' followed by regeneration via 'prepare_cmake.sh'"
 
     cd ->/dev/null
 
     exit 1
   else
 
-    echo "Cleaning ${ProjectName} build (via command \`$MakeCmd clean\`)"
+    echo "Cleaning ${SisClr_Blue}${SisClr_Bold}${ProjectName}${SisClr_None} (via command \`${SisClr_Blue}${SisClr_Bold}$MakeCmd clean${SisClr_None}\`)"
 
     $MakeCmd clean
     status=$?
@@ -84,4 +110,3 @@ fi
 
 
 # ############################## end of file ############################# #
-
