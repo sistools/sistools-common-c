@@ -5,7 +5,7 @@
 
 - [Requisites](#requisites)
 - [Building](#building)
-	- [via CMake](#via-cmake)
+  - [via CMake](#via-cmake)
 - [Using the library](#using-the-library)
 - [API documentation](#api-documentation)
 
