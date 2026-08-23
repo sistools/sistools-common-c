@@ -1,22 +1,20 @@
 #! /bin/bash
 
-#############################################################################
-# File:     generate_doxygen.sh
-#
-# Purpose:  Generates HTML API documentation from public headers via Doxygen
-#
-#############################################################################
-
 ScriptPath=$0
 Dir=$(cd "$(dirname "$ScriptPath")" && pwd)
 Basename=$(basename "$ScriptPath")
+
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
+ProjectNameFile="$Dir/.sis/project_name.txt"
+ProjectName=$(tr -d '[:space:]' < "$ProjectNameFile")
+
+DoxygenOptions=()
 
 
 # ##########################################################
 # colours
 
-if command -v tput > /dev/null; then
+if [ -n "${TERM:-}" ] && [ -t 1 ] && command -v tput >/dev/null 2>&1; then
 
   SisClr_Blue=${FG_BLUE:-$(tput setaf 4)}
   SisClr_Red=${FG_RED:-$(tput setaf 1)}
@@ -37,6 +35,10 @@ fi
 while [[ $# -gt 0 ]]; do
 
   case $1 in
+    --quiet|-q)
+
+      DoxygenOptions=(-q)
+      ;;
     --help)
 
       [ -f "$Dir/.sis/script_info_lines.txt" ] && cat "$Dir/.sis/script_info_lines.txt"
@@ -46,6 +48,14 @@ Generates HTML API documentation from public headers via Doxygen
 $ScriptPath [ ... flags/options ... ]
 
 Flags/options:
+
+    behaviour:
+
+    -q
+    --quiet
+        causes the flag -q to be passed to Doxygen, which will then act as
+        if QUIET=YES has been set
+
 
     standard flags:
 
@@ -77,7 +87,11 @@ done
 # ##########################################################
 # main()
 
-cd "$Dir" || exit 1
+mkdir -p $CMakeDir || exit 1
+
+cd $CMakeDir
+
+echo "Executing Doxygen for ${SisClr_Blue}${SisClr_Bold}${ProjectName}${SisClr_None} (in ${SisClr_Blue}${SisClr_Bold}${CMakeDir}${SisClr_None})"
 
 if ! command -v doxygen >/dev/null 2>&1; then
 
@@ -86,7 +100,7 @@ if ! command -v doxygen >/dev/null 2>&1; then
   exit 1
 fi
 
-mkdir -p "${CMakeDir}/doxygen"
+mkdir -p "${CMakeDir}/doxygen" || exit 1
 
 {
   cat Doxyfile

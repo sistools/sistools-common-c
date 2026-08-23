@@ -1,7 +1,7 @@
 #! /bin/bash
 
 ScriptPath=$0
-Dir=$(cd $(dirname "$ScriptPath"); pwd)
+Dir=$(cd "$(dirname "$ScriptPath")" && pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
 [[ -n "$MSYSTEM" ]] && DefaultMakeCmd=mingw32-make.exe || DefaultMakeCmd=make
@@ -18,7 +18,7 @@ Verbosity=${XTESTS_VERBOSITY:-${TEST_VERBOSITY:-3}}
 # ##########################################################
 # colours
 
-if command -v tput > /dev/null; then
+if [ -n "${TERM:-}" ] && [ -t 1 ] && command -v tput >/dev/null 2>&1; then
 
   SisClr_Blue=${FG_BLUE:-$(tput setaf 4)}
   SisClr_Red=${FG_RED:-$(tput setaf 1)}

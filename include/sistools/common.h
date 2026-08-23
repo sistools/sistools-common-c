@@ -4,7 +4,7 @@
  * Purpose: Main header file for sistools-common-c (C-API).
  *
  * Created: 7th August 2026
- * Updated: 16th August 2026
+ * Updated: 23rd August 2026
  *
  * Home:    https://github.com/sistools/sistools-common-c/
  *
@@ -39,7 +39,7 @@
  * ////////////////////////////////////////////////////////////////////// */
 
 
-/** \file sistools/common.h
+/** @file sistools/common.h
  *
  * [C, C++] Main header file for sistools-common-c (C-API).
  */
@@ -51,7 +51,7 @@
 # define STCC_VER_SISTOOLS_H_COMMON_MAJOR  0
 # define STCC_VER_SISTOOLS_H_COMMON_MINOR  1
 # define STCC_VER_SISTOOLS_H_COMMON_PATCH  0
-# define STCC_VER_SISTOOLS_H_COMMON_EDIT   5
+# define STCC_VER_SISTOOLS_H_COMMON_EDIT   6
 #endif /* !STCC_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -60,26 +60,26 @@
  */
 
 /**
- * \def STCC_VER_MAJOR
+ * @def STCC_VER_MAJOR
  *
  * The Major version number of the sistools-common-c library
  *
- * \def STCC_VER_MINOR
+ * @def STCC_VER_MINOR
  *
  * Minor version number of the sistools-common-c library
  *
- * \def STCC_VER_PATCH
+ * @def STCC_VER_PATCH
  *
  * The patch number of the sistools-common-c library
  *
- * \def STCC_VER
+ * @def STCC_VER
  *
  * The composite version of the sistools-common-c library
  */
 
 #define STCC_VER_MAJOR          0
 #define STCC_VER_MINOR          1
-#define STCC_VER_PATCH          0
+#define STCC_VER_PATCH          1
 #define STCC_VER_ALPHABETA      0xFF
 
 #define STCC_VER \
@@ -102,7 +102,7 @@
  * macros
  */
 
-/** \def STCC_CALL(rt)
+/** @def STCC_CALL(rt)
  *
  * Calling-convention / linkage wrapper for API functions.
  */

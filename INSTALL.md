@@ -5,7 +5,7 @@
 
 - [Requisites](#requisites)
 - [Building](#building)
-	- [via CMake](#via-cmake)
+  - [via CMake](#via-cmake)
 - [Using the library](#using-the-library)
 - [API documentation](#api-documentation)
 
@@ -16,9 +16,9 @@ Installation requires **CMake** (3.20 or later) and a supported C toolchain.
 
 **sistools-common-c** depends on:
 
-* [**CLASP**](https://github.com/synesissoftware/CLASP);
-* [**Diagnosticism**](https://github.com/synesissoftware/Diagnosticism);
-* [**STLSoft**](https://github.com/synesissoftware/STLSoft);
+* [**CLASP**](https://github.com/synesissoftware/CLASP) 0.15 or later;
+* [**Diagnosticism**](https://github.com/synesissoftware/Diagnosticism) 0.3 or later;
+* [**STLSoft**](https://github.com/synesissoftware/STLSoft) 1.11.1 or later;
 
 Building the project's unit tests additionally requires:
 
@@ -60,6 +60,15 @@ The primary choice for installation is by use of **CMake**.
 	```bash
 	$ ./prepare_cmake.sh -E -T
 	```
+
+   If **STLSoft** has not been installed, its source-tree root can be supplied
+   with the `--stlsoft-root-dir` (or `-s`) option, or through the `STLSOFT`
+   environment variable:
+
+   ```bash
+   $ ./prepare_cmake.sh --stlsoft-root-dir ~/open-source/STLSoft
+   $ STLSOFT=~/open-source/STLSoft ./prepare_cmake.sh -E -T
+   ```
 
    (**Hint**: execute `$ ./prepare_cmake.sh --help` for more information.)
 

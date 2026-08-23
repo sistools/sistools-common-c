@@ -58,14 +58,27 @@ set(PROJECT_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT
 
 # adhere strictly to C and C++ standards plus extensions. These are actually
 # useless since we do not compile anything; they merely state our intention.
-set(CMAKE_C_STANDARD 17)
+if(NOT CMAKE_C_STANDARD)
+
+	set(CMAKE_C_STANDARD 17)
+endif()
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS ON) # GNU extensions and POSIX standard
-set(CMAKE_CXX_STANDARD 17)
+if(NOT CMAKE_CXX_STANDARD)
+
+	set(CMAKE_CXX_STANDARD 17)
+endif()
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
 if(MSVC)
+
+	if(MSVC_VERSION GREATER_EQUAL 1914)
+
+		add_compile_options("/Zc:__cplusplus")
+
+		add_definitions(-D_SILENCE_CXX17_ITERATOR_BASE_CLASS_DEPRECATION_WARNING)
+	endif()
 
 	if(MSVC_VERSION LESS 1930)
 
@@ -136,20 +149,39 @@ option(BUILD_TESTING "Build tests" OFF)
 # 3. if the package STLSoft (via find_package()) is found then it is used;
 #    otherwise
 # 4. we abort
+#
+# NOTE: This is resolved before other dependencies because the imported
+# CLASP::core target may reference STLSoft::STLSoft in its link interface,
+# so that target must be available before find_package(CLASP) loads CLASP's
+# target definitions.
 
 if(DEFINED STLSOFT)
 
 	message("-- STLSOFT provided as CMake variable with value '${STLSOFT}'")
-
-	set(STLSOFT_INCLUDE_DIR ${STLSOFT}/include)
+	set(STLSOFT_INCLUDE_DIR "${STLSOFT}/include")
 elseif(DEFINED ENV{STLSOFT})
 
 	message("-- STLSOFT provided as environment variable with value '$ENV{STLSOFT}'")
+	set(STLSOFT_INCLUDE_DIR "$ENV{STLSOFT}/include")
+endif()
 
-	set(STLSOFT_INCLUDE_DIR $ENV{STLSOFT}/include)
+if(DEFINED STLSOFT_INCLUDE_DIR)
+
+	if(NOT IS_DIRECTORY "${STLSOFT_INCLUDE_DIR}")
+
+		message(FATAL_ERROR "STLSoft include directory not found: ${STLSOFT_INCLUDE_DIR}")
+	endif()
+
+	if(NOT TARGET STLSoft::STLSoft)
+
+		add_library(STLSoft::STLSoft INTERFACE IMPORTED GLOBAL)
+		set_target_properties(STLSoft::STLSoft PROPERTIES
+			INTERFACE_INCLUDE_DIRECTORIES "${STLSOFT_INCLUDE_DIR}"
+		)
+	endif()
 else()
 
-	set(STLSoft_REQUIRED_VERSION_ 1.11)
+	set(STLSoft_REQUIRED_VERSION_ 1.11.1)
 
 	find_package(STLSoft ${STLSoft_REQUIRED_VERSION_} REQUIRED)
 
@@ -158,7 +190,7 @@ endif()
 
 if(DEFINED STLSOFT_INCLUDE_DIR)
 
-	include_directories(${STLSOFT_INCLUDE_DIR})
+	include_directories("${STLSOFT_INCLUDE_DIR}")
 endif()
 
 
