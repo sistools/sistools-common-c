@@ -1,7 +1,7 @@
 # sistools-common-c - Changes <!-- omit in toc -->
 
 
-## 0.1.1 - 23rd August 2026
+## 0.1.1 - 24th August 2026
 
 * Added the shared C API and umbrella header **include/sistools/common.h**;
 * Added CMake packaging and the exported **sistools-common-c::core** target;
