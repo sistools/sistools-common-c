@@ -7,6 +7,7 @@
 * Added CMake packaging and the exported **sistools-common-c::core** target;
 * Added CMake helper scripts, Doxygen generation, tests, and editor configuration;
 * Added support for C17/C++17 defaults, MSVC compatibility, and configurable C standards;
+* Improved CMake flexibility for uninstalled **STLSoft** source trees supplied via **STLSOFT**;
 * Updated helper-script diagnostics, project identification, and CMake build-directory handling;
 * Documented intended **sistools** consumers;
 

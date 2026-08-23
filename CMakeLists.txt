@@ -149,17 +149,36 @@ option(BUILD_TESTING "Build tests" OFF)
 # 3. if the package STLSoft (via find_package()) is found then it is used;
 #    otherwise
 # 4. we abort
+#
+# NOTE: This is resolved before other dependencies because the imported
+# CLASP::core target may reference STLSoft::STLSoft in its link interface,
+# so that target must be available before find_package(CLASP) loads CLASP's
+# target definitions.
 
 if(DEFINED STLSOFT)
 
 	message("-- STLSOFT provided as CMake variable with value '${STLSOFT}'")
-
-	set(STLSOFT_INCLUDE_DIR ${STLSOFT}/include)
+	set(STLSOFT_INCLUDE_DIR "${STLSOFT}/include")
 elseif(DEFINED ENV{STLSOFT})
 
 	message("-- STLSOFT provided as environment variable with value '$ENV{STLSOFT}'")
+	set(STLSOFT_INCLUDE_DIR "$ENV{STLSOFT}/include")
+endif()
 
-	set(STLSOFT_INCLUDE_DIR $ENV{STLSOFT}/include)
+if(DEFINED STLSOFT_INCLUDE_DIR)
+
+	if(NOT IS_DIRECTORY "${STLSOFT_INCLUDE_DIR}")
+
+		message(FATAL_ERROR "STLSoft include directory not found: ${STLSOFT_INCLUDE_DIR}")
+	endif()
+
+	if(NOT TARGET STLSoft::STLSoft)
+
+		add_library(STLSoft::STLSoft INTERFACE IMPORTED GLOBAL)
+		set_target_properties(STLSoft::STLSoft PROPERTIES
+			INTERFACE_INCLUDE_DIRECTORIES "${STLSOFT_INCLUDE_DIR}"
+		)
+	endif()
 else()
 
 	set(STLSoft_REQUIRED_VERSION_ 1.11.1)
@@ -171,7 +190,7 @@ endif()
 
 if(DEFINED STLSOFT_INCLUDE_DIR)
 
-	include_directories(${STLSOFT_INCLUDE_DIR})
+	include_directories("${STLSOFT_INCLUDE_DIR}")
 endif()
 
 
