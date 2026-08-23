@@ -1,6 +1,16 @@
 # sistools-common-c - Changes <!-- omit in toc -->
 
 
+## 0.1.1 - 23rd August 2026
+
+* Added the shared C API and umbrella header **include/sistools/common.h**;
+* Added CMake packaging and the exported **sistools-common-c::core** target;
+* Added CMake helper scripts, Doxygen generation, tests, and editor configuration;
+* Added support for C17/C++17 defaults, MSVC compatibility, and configurable C standards;
+* Updated helper-script diagnostics, project identification, and CMake build-directory handling;
+* Documented intended **sistools** consumers;
+
+
 ## 0.1.0 - 16th August 2026
 
 * Added usage helpers (**`include/sistools/common/usage.h`**, **`src/usage.c`**): **`stcc_show_version()`**, **`stcc_show_help()`** (from **mksock** helpers);
