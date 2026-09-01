@@ -163,18 +163,18 @@ stcc_show_version(
 
 STCC_CALL(void)
 stcc_show_help(
-    clasp_arguments_t const*    args
-,   clasp_alias_t const*        specifications
-,   FILE*                       stm
-,   char const*                 toolName
-,   char const*                 summary
-,   char const*                 copyright
-,   char const*                 description
-,   char const*                 usage
-,   int                         verMajor
-,   int                         verMinor
-,   int                         verPatch
-,   int                         verAlphaBeta
+    clasp_arguments_t const*        args
+,   clasp_specification_t const*    specifications
+,   FILE*                           stm
+,   char const*                     toolName
+,   char const*                     summary
+,   char const*                     copyright
+,   char const*                     description
+,   char const*                     usage
+,   int                             verMajor
+,   int                             verMinor
+,   int                             verPatch
+,   int                             verAlphaBeta
 ) STCC_NOEXCEPT
 {
     if (NULL != summary &&
