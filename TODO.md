@@ -14,7 +14,7 @@
 * [x] First shared helper APIs (usage / `--help` / `--version` helpers) in **`sistools/common/usage.h`**;
 * [ ] Examples tree (`examples/`);
 * [ ] TinyCC CI with tests: the **`linux-tcc`** cell currently builds and installs with **`BUILD_TESTING=OFF`** until **STLSoft** / **xTests** support TinyCC;
-* [ ] Adopt usage helpers in **sistools** programs (**mksock**, …);
+* [x] Adopt usage helpers in **sistools** programs (**mksock**, …);
 
 
 ## Performance improvements

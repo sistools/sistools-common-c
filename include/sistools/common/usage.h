@@ -4,7 +4,7 @@
  * Purpose: Help / version usage helpers for sistools programs.
  *
  * Created: 7th August 2026
- * Updated: 16th August 2026
+ * Updated: 1st September 2026
  *
  * Home:    https://github.com/sistools/sistools-common-c/
  *
@@ -51,7 +51,7 @@
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_MAJOR  0
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_MINOR  1
 # define STCC_VER_SISTOOLS_COMMON_H_USAGE_PATCH  0
-# define STCC_VER_SISTOOLS_COMMON_H_USAGE_EDIT   4
+# define STCC_VER_SISTOOLS_COMMON_H_USAGE_EDIT   5
 #endif /* !STCC_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -92,7 +92,7 @@ stcc_show_version(
  *
  * @param args CLASP parsed arguments (may be NULL if unused by
  *  `clasp_showBody` for the given flags).
- * @param specifications CLASP alias array (must not be NULL).
+ * @param specifications CLASP specification array (must not be NULL).
  * @param stm Output stream (e.g. `stdout`).
  * @param toolName Program name for the version line.
  * @param summary Optional summary line (skipped if NULL or empty).
@@ -106,18 +106,18 @@ stcc_show_version(
  */
 STCC_CALL(void)
 stcc_show_help(
-    clasp_arguments_t const*    args
-,   clasp_alias_t const*        specifications
-,   FILE*                       stm
-,   char const*                 toolName
-,   char const*                 summary
-,   char const*                 copyright
-,   char const*                 description
-,   char const*                 usage
-,   int                         verMajor
-,   int                         verMinor
-,   int                         verPatch
-,   int                         verAlphaBeta
+    clasp_arguments_t const*        args
+,   clasp_specification_t const*    specifications
+,   FILE*                           stm
+,   char const*                     toolName
+,   char const*                     summary
+,   char const*                     copyright
+,   char const*                     description
+,   char const*                     usage
+,   int                             verMajor
+,   int                             verMinor
+,   int                             verPatch
+,   int                             verAlphaBeta
 ) STCC_NOEXCEPT;
 
 

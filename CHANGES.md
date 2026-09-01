@@ -1,6 +1,12 @@
 # sistools-common-c - Changes <!-- omit in toc -->
 
 
+## 0.1.2 - 1st September 2026
+
+* Renamed **`stcc_show_help()`**'s specifications parameter type from `clasp_alias_t` to `clasp_specification_t`;
+* Updated the **README.md** signature sample and Doxygen parameter text accordingly;
+
+
 ## 0.1.1 - 24th August 2026
 
 * Added the shared C API and umbrella header **include/sistools/common.h**;

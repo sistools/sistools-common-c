@@ -4,7 +4,7 @@
  * Purpose: Main header file for sistools-common-c (C-API).
  *
  * Created: 7th August 2026
- * Updated: 23rd August 2026
+ * Updated: 1st September 2026
  *
  * Home:    https://github.com/sistools/sistools-common-c/
  *
@@ -79,7 +79,7 @@
 
 #define STCC_VER_MAJOR          0
 #define STCC_VER_MINOR          1
-#define STCC_VER_PATCH          1
+#define STCC_VER_PATCH          2
 #define STCC_VER_ALPHABETA      0xFF
 
 #define STCC_VER \
